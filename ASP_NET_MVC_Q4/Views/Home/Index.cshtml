@@ -29,7 +29,7 @@
 <body>
     <font face="微軟正黑體" size="5">部門及員工資訊</font>
     <div>
-        部門:   @Html.DropDownListFor(m => m.Id, ViewData["department"] as IEnumerable<SelectListItem>, new { @onchange = "getEmployee(this.value)" })
+        部門:   @Html.DropDownListFor(m => m.Id, ViewData["Department"] as IEnumerable<SelectListItem>, new { @onchange = "getEmployee(this.value)" })
     </div>
     <div>
         員工:  <select id="Employee"></select>

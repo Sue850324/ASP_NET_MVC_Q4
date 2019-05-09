@@ -13,37 +13,35 @@ namespace ASP_NET_MVC_Q4.Controllers
 {
     public class HomeController : Controller
     {
-        public object departments()
+        public object Departments()
         {
-            string filepath = Server.MapPath("~/App_Data/department.json");
-            string json = System.IO.File.ReadAllText(filepath);
+            string filePath = Server.MapPath("~/App_Data/department.json");
+            string json = System.IO.File.ReadAllText(filePath);
             List<DepartmentModel> list = JsonConvert.DeserializeObject<List<DepartmentModel>>(json);
-            List<SelectListItem> departmentlist = new List<SelectListItem>();
+            List<SelectListItem> departmentList = new List<SelectListItem>();
             foreach (var item in list)
             {
-                departmentlist.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
+                departmentList.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
             }
-            return ViewData["department"] = departmentlist;
+            return ViewData["Department"] = departmentList;
         }
-        public List<Sub_DepartmentModel> subdepartment()
+        public List<Sub_DepartmentModel> SubDepartment()
         {
-            string filepath2 = Server.MapPath("~/App_Data/sub_department.json");
-            string json2 = System.IO.File.ReadAllText(filepath2);
+            string filePath2 = Server.MapPath("~/App_Data/sub_department.json");
+            string json2 = System.IO.File.ReadAllText(filePath2);
             List<Sub_DepartmentModel> list2 = JsonConvert.DeserializeObject<List<Sub_DepartmentModel>>(json2);
-
             return list2;
         }
 
         public ActionResult Index()
         {
-            departments();
+            Departments();
             return View();
         }
 
         public ActionResult GetEmployee(int id)
         {
-
-            return Json(subdepartment().Where(x => x.ParentId == id), JsonRequestBehavior.AllowGet); ;
+            return Json(SubDepartment().Where(x => x.ParentId == id), JsonRequestBehavior.AllowGet); ;
         }
     }
 }
