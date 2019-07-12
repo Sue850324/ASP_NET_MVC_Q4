@@ -3,28 +3,8 @@
 <html>
 <head>
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="~/scripts/JSLINQ.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
-    <script>
-        function getEmployee(dptId) {
-            $.ajax
-                ({
-                    url: '/Home/GetEmployee/' + dptId,
-                    type: 'get',
-                    success: function (data) {
-                        console.log(data);
-                        $('#Employee option').remove();
-                        $.each(data, function () {
-                            $('#Employee').append($('<option></option>').attr("value", this.Id).text(this.Name));
-                        })
-                    }
-                });
-        }
-        function submit() {
-            $('#Check').text($('#Id option:selected').text() + ' : ' + $('#Employee option:selected').text() );
-
-        }
-    </script>
+    <script src="~/Scripts/Index.js"></script>
 </head>
 <body>
     <font face="微軟正黑體" size="5">部門及員工資訊</font>
